@@ -61,14 +61,14 @@
                             <div class="field-content">
                                 <label>Check In</label>
                                 <div class="date-display" id="checkin-display">Sun, Oct 12</div>
-                                <input type="date" id="checkin-date" class="date-input-visible">
+                                <input type="date" id="checkin-date" class="date-input-visible" min="">
                             </div>
                         </div>
                         <div class="search-field date-field" data-field="checkout">
                             <div class="field-content">
                                 <label>Check Out</label>
                                 <div class="date-display" id="checkout-display">Mon, Oct 13</div>
-                                <input type="date" id="checkout-date" class="date-input-visible">
+                                <input type="date" id="checkout-date" class="date-input-visible" min="">
                             </div>
                         </div>
                         <div class="search-field" id="guests-field">
@@ -81,36 +81,6 @@
                     </div>
                 </div>
                 
-                <!-- Guests Dropdown -->
-                <div class="guests-modal" id="guests-modal">
-                    <div class="guests-dropdown-content">
-                        <div class="guests-header">Select guests and rooms</div>
-                        <div class="guests-option">
-                            <span class="guests-label">Adults</span>
-                            <div class="guests-counter">
-                                <button class="guests-btn" id="adults-minus">-</button>
-                                <span class="guests-value" id="adults-count">2</span>
-                                <button class="guests-btn" id="adults-plus">+</button>
-                            </div>
-                        </div>
-                        <div class="guests-option">
-                            <span class="guests-label">Children</span>
-                            <div class="guests-counter">
-                                <button class="guests-btn" id="children-minus">-</button>
-                                <span class="guests-value" id="children-count">0</span>
-                                <button class="guests-btn" id="children-plus">+</button>
-                            </div>
-                        </div>
-                        <div class="guests-option">
-                            <span class="guests-label">Rooms</span>
-                            <div class="guests-counter">
-                                <button class="guests-btn" id="rooms-minus">-</button>
-                                <span class="guests-value" id="rooms-count">1</span>
-                                <button class="guests-btn" id="rooms-plus">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <div class="hero-stats">
                     <div class="stat">
@@ -447,6 +417,44 @@
             </div>
         </div>
     </footer>
+
+    <!-- Guests Dropdown -->
+    <div class="guests-modal" id="guests-modal">
+        <div class="guests-dropdown-content">
+            <div class="guests-header">Select guests and rooms</div>
+            <div class="guests-option">
+                <span class="guests-label">Adults</span>
+                <div class="guests-counter">
+                    <button class="guests-btn" id="adults-minus">-</button>
+                    <span class="guests-value" id="adults-count">2</span>
+                    <button class="guests-btn" id="adults-plus">+</button>
+                </div>
+            </div>
+            <div class="guests-option">
+                <span class="guests-label">Children</span>
+                <div class="guests-counter">
+                    <button class="guests-btn" id="children-minus">-</button>
+                    <span class="guests-value" id="children-count">0</span>
+                    <button class="guests-btn" id="children-plus">+</button>
+                </div>
+            </div>
+            <div class="guests-option">
+                <span class="guests-label">Rooms</span>
+                <div class="guests-counter">
+                    <button class="guests-btn" id="rooms-minus">-</button>
+                    <span class="guests-value" id="rooms-count">1</span>
+                    <button class="guests-btn" id="rooms-plus">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
 
     <script src="script.js"></script>
 </body>
