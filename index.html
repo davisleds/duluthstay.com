@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find and book the best hotels in Duluth, Minnesota. Top-rated Canal Park hotels, budget-friendly options, and family accommodations. Book with confidence through our trusted partners.">
+    <meta name="keywords" content="hotels in Duluth MN, Canal Park hotels, best hotels Duluth Minnesota, Duluth accommodations, Lake Superior hotels, downtown Duluth hotels">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="DuluthStay.com - Best Hotels in Duluth, Minnesota">
+    <meta property="og:description" content="Find and book the best hotels in Duluth, Minnesota. Top-rated Canal Park hotels, budget-friendly options, and family accommodations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://duluthstay.com">
+    
+    <title>DuluthStay.com - Find and Book the Best Hotels in Duluth, Minnesota</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Booking.com affiliate integration -->
+    <script type="text/javascript" src="//www.booking.com/affiliate/widget.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1><a href="/">DuluthStay.com</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#hotels">Hotels</a></li>
+                    <li><a href="#neighborhoods">Neighborhoods</a></li>
+                    <li><a href="#attractions">Attractions</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Duluth, Minnesota</h1>
+                <p class="hero-subheadline">Discover top-rated stays in <a href="#canal-park" class="neighborhood-link">Canal Park</a>, <a href="#downtown" class="neighborhood-link">Downtown</a> & <a href="#duluth-heights" class="neighborhood-link">Duluth Heights</a></p>
+                
+                <!-- Enhanced Search Widget -->
+                <div class="search-widget">
+                    <div class="search-form">
+                        <div class="search-field date-field" data-field="checkin">
+                            <div class="field-content">
+                                <label>Check In</label>
+                                <div class="date-display" id="checkin-display">Sun, Oct 12</div>
+                                <input type="date" id="checkin-date" class="date-input-visible">
+                            </div>
+                        </div>
+                        <div class="search-field date-field" data-field="checkout">
+                            <div class="field-content">
+                                <label>Check Out</label>
+                                <div class="date-display" id="checkout-display">Mon, Oct 13</div>
+                                <input type="date" id="checkout-date" class="date-input-visible">
+                            </div>
+                        </div>
+                        <div class="search-field" id="guests-field">
+                            <div class="field-content">
+                                <label>Rooms/Guests</label>
+                                <div class="date-display" style="white-space: nowrap;">1 Room, 2 Guests</div>
+                            </div>
+                        </div>
+                        <button class="search-btn">Search</button>
+                    </div>
+                </div>
+                
+                <!-- Guests Dropdown -->
+                <div class="guests-modal" id="guests-modal">
+                    <div class="guests-dropdown-content">
+                        <div class="guests-header">Select guests and rooms</div>
+                        <div class="guests-option">
+                            <span class="guests-label">Adults</span>
+                            <div class="guests-counter">
+                                <button class="guests-btn" id="adults-minus">-</button>
+                                <span class="guests-value" id="adults-count">2</span>
+                                <button class="guests-btn" id="adults-plus">+</button>
+                            </div>
+                        </div>
+                        <div class="guests-option">
+                            <span class="guests-label">Children</span>
+                            <div class="guests-counter">
+                                <button class="guests-btn" id="children-minus">-</button>
+                                <span class="guests-value" id="children-count">0</span>
+                                <button class="guests-btn" id="children-plus">+</button>
+                            </div>
+                        </div>
+                        <div class="guests-option">
+                            <span class="guests-label">Rooms</span>
+                            <div class="guests-counter">
+                                <button class="guests-btn" id="rooms-minus">-</button>
+                                <span class="guests-value" id="rooms-count">1</span>
+                                <button class="guests-btn" id="rooms-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">50+ <span class="stat-label">Hotels</span></div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <div class="stat-number">4.5<span class="stat-star">★</span> <span class="stat-label">Average Rating</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duluth Highlights Section -->
+    <section class="duluth-highlights">
+        <div class="container">
+            <h2>Why Choose Duluth?</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <img src="lakephoto.jpg" alt="Lake Superior shoreline" loading="lazy">
+                    <h3>Lake Superior Views</h3>
+                    <p>Stunning waterfront accommodations with breathtaking lake views</p>
+                </div>
+                <div class="highlight-card">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop" alt="Aerial Lift Bridge" loading="lazy">
+                    <h3>Historic Canal Park</h3>
+                    <p>Stay in the heart of Duluth's most popular tourist destination</p>
+                </div>
+                <div class="highlight-card">
+                    <img src="natureduluth.jpg" alt="Duluth waterfront" loading="lazy">
+                    <h3>Natural Beauty</h3>
+                    <p>Hotels surrounded by Lake Superior's stunning waterfront and scenic trails</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Rated Hotels Section -->
+    <section id="hotels" class="hotels-section">
+        <div class="container">
+            <h2>Top-Rated Hotels in Duluth</h2>
+            <div class="hotels-grid">
+                <!-- Hotel 1: Canal Park Lodge -->
+                <div class="hotel-card featured">
+                    <div class="hotel-image-gallery">
+                        <div class="main-image">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop" alt="Canal Park Lodge exterior view" loading="lazy">
+                            <div class="hotel-badge">Top Rated</div>
+                            <div class="image-overlay">
+                                <button class="view-gallery-btn">View Gallery</button>
+                            </div>
+                        </div>
+                        <div class="thumbnail-images">
+                            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=100&h=60&fit=crop" alt="Canal Park Lodge room" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=100&h=60&fit=crop" alt="Canal Park Lodge lobby" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=100&h=60&fit=crop" alt="Canal Park Lodge pool" loading="lazy">
+                            <span class="more-photos">+5</span>
+                        </div>
+                    </div>
+                    <div class="hotel-content">
+                        <div class="hotel-header">
+                            <h3>Canal Park Lodge</h3>
+                            <div class="hotel-location">📍 Canal Park • 0.2 mi from center</div>
+                        </div>
+                        <div class="hotel-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-score">4.8/5</span>
+                            <span class="review-count">(247 reviews)</span>
+                        </div>
+                        <p class="hotel-description">Luxury waterfront hotel with stunning Lake Superior views, premium amenities, and direct access to Canal Park attractions.</p>
+                        <div class="hotel-amenities">
+                            <span class="amenity">🏊 Pool</span>
+                            <span class="amenity">🍽️ Restaurant</span>
+                            <span class="amenity">🅿️ Parking</span>
+                            <span class="amenity">💼 Business Center</span>
+                            <span class="amenity">🏋️ Fitness</span>
+                            <span class="amenity">🛁 Spa</span>
+                        </div>
+                        <div class="hotel-pricing">
+                            <div class="price-info">
+                                <span class="hotel-price">$189</span>
+                                <span class="price-period">/night</span>
+                                <span class="price-note">+ taxes & fees</span>
+                            </div>
+                            <div class="price-comparison">
+                                <span class="original-price">$220</span>
+                                <span class="discount">Save 14%</span>
+                            </div>
+                        </div>
+                        <div class="hotel-actions">
+                            <a href="#" class="book-btn" data-hotel="canal-park-lodge">Book Now</a>
+                            <button class="favorite-btn" data-hotel="canal-park-lodge">♡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel 2: Fitger's Inn -->
+                <div class="hotel-card">
+                    <div class="hotel-image">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop" alt="Fitger's Inn historic building" loading="lazy">
+                    </div>
+                    <div class="hotel-content">
+                        <h3>Fitger's Inn</h3>
+                        <div class="hotel-location">📍 Canal Park</div>
+                        <div class="hotel-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-score">4.6/5</span>
+                        </div>
+                        <p class="hotel-description">Historic brewery-turned-hotel featuring unique architecture, craft brewery, and prime Canal Park location.</p>
+                        <div class="hotel-amenities">
+                            <span class="amenity">Historic</span>
+                            <span class="amenity">Brewery</span>
+                            <span class="amenity">Restaurant</span>
+                            <span class="amenity">Bar</span>
+                        </div>
+                        <div class="hotel-price">From $149/night</div>
+                        <a href="#" class="book-btn" data-hotel="fitgers-inn">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Hotel 3: Radisson Hotel Duluth -->
+                <div class="hotel-card">
+                    <div class="hotel-image">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop" alt="Radisson Hotel Duluth modern exterior" loading="lazy">
+                    </div>
+                    <div class="hotel-content">
+                        <h3>Radisson Hotel Duluth</h3>
+                        <div class="hotel-location">📍 Downtown</div>
+                        <div class="hotel-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-score">4.4/5</span>
+                        </div>
+                        <p class="hotel-description">Modern downtown hotel with business amenities, conference facilities, and easy access to Duluth attractions.</p>
+                        <div class="hotel-amenities">
+                            <span class="amenity">Business Center</span>
+                            <span class="amenity">Fitness</span>
+                            <span class="amenity">Restaurant</span>
+                            <span class="amenity">Parking</span>
+                        </div>
+                        <div class="hotel-price">From $129/night</div>
+                        <a href="#" class="book-btn" data-hotel="radisson-duluth">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget-Friendly Hotels -->
+    <section class="budget-hotels">
+        <div class="container">
+            <h2>Budget-Friendly Hotels in Duluth</h2>
+            <div class="hotels-grid">
+                <!-- Hotel 4: Comfort Inn -->
+                <div class="hotel-card budget">
+                    <div class="hotel-image">
+                        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=300&fit=crop" alt="Comfort Inn Duluth exterior" loading="lazy">
+                        <div class="hotel-badge budget-badge">Budget Friendly</div>
+                    </div>
+                    <div class="hotel-content">
+                        <h3>Comfort Inn & Suites</h3>
+                        <div class="hotel-location">📍 Lakeside</div>
+                        <div class="hotel-rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span class="rating-score">4.2/5</span>
+                        </div>
+                        <p class="hotel-description">Clean, comfortable accommodations with complimentary breakfast and convenient Lakeside location near attractions.</p>
+                        <div class="hotel-amenities">
+                            <span class="amenity">Free Breakfast</span>
+                            <span class="amenity">WiFi</span>
+                            <span class="amenity">Parking</span>
+                            <span class="amenity">Pool</span>
+                        </div>
+                        <div class="hotel-price">From $89/night</div>
+                        <a href="#" class="book-btn" data-hotel="comfort-inn">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Hotel 5: Super 8 -->
+                <div class="hotel-card budget">
+                    <div class="hotel-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="Super 8 Duluth hotel building" loading="lazy">
+                    </div>
+                    <div class="hotel-content">
+                        <h3>Super 8 by Wyndham</h3>
+                        <div class="hotel-location">📍 Downtown</div>
+                        <div class="hotel-rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span class="rating-score">4.0/5</span>
+                        </div>
+                        <p class="hotel-description">Affordable downtown location with basic amenities, perfect for budget-conscious travelers exploring Duluth.</p>
+                        <div class="hotel-amenities">
+                            <span class="amenity">Free WiFi</span>
+                            <span class="amenity">Parking</span>
+                            <span class="amenity">Pet Friendly</span>
+                            <span class="amenity">24/7 Front Desk</span>
+                        </div>
+                        <div class="hotel-price">From $69/night</div>
+                        <a href="#" class="book-btn" data-hotel="super-8">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family-Friendly Hotels -->
+    <section class="family-hotels">
+        <div class="container">
+            <h2>Family-Friendly Hotels in Duluth</h2>
+            <div class="hotels-grid">
+                <!-- Hotel 6: Holiday Inn -->
+                <div class="hotel-card family">
+                    <div class="hotel-image">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop" alt="Holiday Inn Express family-friendly hotel" loading="lazy">
+                        <div class="hotel-badge family-badge">Family Friendly</div>
+                    </div>
+                    <div class="hotel-content">
+                        <h3>Holiday Inn Express</h3>
+                        <div class="hotel-location">📍 Canal Park</div>
+                        <div class="hotel-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-score">4.5/5</span>
+                        </div>
+                        <p class="hotel-description">Perfect for families with spacious rooms, indoor pool, and close proximity to Canal Park's family attractions.</p>
+                        <div class="hotel-amenities">
+                            <span class="amenity">Indoor Pool</span>
+                            <span class="amenity">Free Breakfast</span>
+                            <span class="amenity">Family Rooms</span>
+                            <span class="amenity">Game Room</span>
+                        </div>
+                        <div class="hotel-price">From $139/night</div>
+                        <a href="#" class="book-btn" data-hotel="holiday-inn-express">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Hotel 7: Hampton Inn -->
+                <div class="hotel-card family">
+                    <div class="hotel-image">
+                        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=300&fit=crop" alt="Hampton Inn Duluth family accommodations" loading="lazy">
+                    </div>
+                    <div class="hotel-content">
+                        <h3>Hampton Inn & Suites</h3>
+                        <div class="hotel-location">📍 Lakeside</div>
+                        <div class="hotel-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-score">4.3/5</span>
+                        </div>
+                        <p class="hotel-description">Reliable family accommodations with suite options, complimentary breakfast, and easy access to Lake Superior.</p>
+                        <div class="hotel-amenities">
+                            <span class="amenity">Suites Available</span>
+                            <span class="amenity">Free Breakfast</span>
+                            <span class="amenity">Fitness Center</span>
+                            <span class="amenity">Business Center</span>
+                        </div>
+                        <div class="hotel-price">From $119/night</div>
+                        <a href="#" class="book-btn" data-hotel="hampton-inn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duluth Neighborhoods Guide -->
+    <section id="neighborhoods" class="neighborhoods-section">
+        <div class="container">
+            <h2>Duluth Neighborhoods & Attractions</h2>
+            <div class="neighborhoods-grid">
+                <div class="neighborhood-card">
+                    <h3>Canal Park</h3>
+                    <p>Duluth's premier waterfront destination featuring the Aerial Lift Bridge, Lakewalk, restaurants, and shopping. Perfect for families and couples.</p>
+                    <ul>
+                        <li>Aerial Lift Bridge</li>
+                        <li>Lakewalk</li>
+                        <li>Great Lakes Aquarium</li>
+                        <li>Vista Fleet Cruises</li>
+                    </ul>
+                </div>
+                <div class="neighborhood-card">
+                    <h3>Downtown</h3>
+                    <p>Historic downtown with theaters, museums, and shopping. Close to the Duluth Entertainment Convention Center and local businesses.</p>
+                    <ul>
+                        <li>Duluth Entertainment Convention Center</li>
+                        <li>NorShor Theatre</li>
+                        <li>Duluth Art Institute</li>
+                        <li>Local Shopping</li>
+                    </ul>
+                </div>
+                <div class="neighborhood-card">
+                    <h3>Lakeside</h3>
+                    <p>Residential neighborhood with easy access to Lake Superior, parks, and local attractions. Great for extended stays.</p>
+                    <ul>
+                        <li>Lakeside Park</li>
+                        <li>Lake Superior Zoo</li>
+                        <li>Enger Tower</li>
+                        <li>Local Restaurants</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DuluthStay.com</h3>
+                    <p>Your trusted source for finding and booking the best hotels in Duluth, Minnesota.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#hotels">Hotels</a></li>
+                        <li><a href="#neighborhoods">Neighborhoods</a></li>
+                        <li><a href="#attractions">Attractions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Hotel Categories</h4>
+                    <ul>
+                        <li><a href="#top-rated">Top Rated</a></li>
+                        <li><a href="#budget">Budget Friendly</a></li>
+                        <li><a href="#family">Family Friendly</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Questions about Duluth hotels?</p>
+                    <p>We're here to help you find the perfect stay.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DuluthStay.com. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
