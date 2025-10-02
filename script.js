@@ -768,6 +768,277 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Event tracked:', eventName, eventData);
     }
     
+    // Highlights Carousel functionality
+    class HighlightsCarousel {
+        constructor() {
+            this.track = document.getElementById('highlights-track');
+            this.prevBtn = document.getElementById('prev-highlights-btn');
+            this.nextBtn = document.getElementById('next-highlights-btn');
+            this.dotsContainer = document.getElementById('highlights-dots');
+            this.cards = document.querySelectorAll('.highlight-card');
+            this.currentIndex = 0;
+            this.totalCards = this.cards.length;
+            this.autoPlayInterval = null;
+            this.autoPlayDelay = 3000; // 3 seconds
+            this.isTransitioning = false;
+            
+            console.log('Carousel elements found:', {
+                track: !!this.track,
+                prevBtn: !!this.prevBtn,
+                nextBtn: !!this.nextBtn,
+                cards: this.cards.length,
+                totalCards: this.totalCards
+            });
+            
+            if (this.track && this.cards.length > 0) {
+                console.log('Initializing carousel...');
+                this.init();
+            } else {
+                console.log('Carousel initialization failed - missing elements');
+            }
+        }
+        
+        init() {
+            this.createInfiniteLoop();
+            this.bindEvents();
+            this.updateCarousel();
+            this.startAutoPlay();
+        }
+        
+        createInfiniteLoop() {
+            // Clone first 3 cards and append to end
+            for (let i = 0; i < 3; i++) {
+                const clone = this.cards[i].cloneNode(true);
+                clone.classList.add('clone');
+                this.track.appendChild(clone);
+            }
+            
+            // Clone last 3 cards and prepend to beginning
+            for (let i = this.totalCards - 3; i < this.totalCards; i++) {
+                const clone = this.cards[i].cloneNode(true);
+                clone.classList.add('clone');
+                this.track.insertBefore(clone, this.track.firstChild);
+            }
+            
+            // Start at the real first card (after the prepended clones)
+            this.currentIndex = 3;
+        }
+        
+        
+        bindEvents() {
+            this.prevBtn.addEventListener('click', () => this.prevCard());
+            this.nextBtn.addEventListener('click', () => this.nextCard());
+            
+            
+            // Touch/swipe support with smart direction detection (1 and 2 finger)
+            let startX = 0;
+            let endX = 0;
+            let startY = 0;
+            let endY = 0;
+            let isHorizontalSwipe = false;
+            let isVerticalSwipe = false;
+            let touchStarted = false;
+            let touchCount = 0;
+            
+            this.track.addEventListener('touchstart', (e) => {
+                console.log('Touch start detected', e.touches.length, 'fingers');
+                touchCount = e.touches.length;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                touchStarted = true;
+                isHorizontalSwipe = false;
+                isVerticalSwipe = false;
+            }, { passive: true });
+            
+            this.track.addEventListener('touchmove', (e) => {
+                if (!touchStarted) return;
+                
+                const currentX = e.touches[0].clientX;
+                const currentY = e.touches[0].clientY;
+                const diffX = Math.abs(currentX - startX);
+                const diffY = Math.abs(currentY - startY);
+                
+                console.log('Touch move:', { diffX, diffY, isHorizontalSwipe, isVerticalSwipe });
+                
+                // Determine swipe direction after 5px movement
+                if (diffX > 5 || diffY > 5) {
+                    if (diffX > diffY) {
+                        // Horizontal swipe - prevent page scrolling, allow carousel
+                        console.log('Horizontal swipe detected');
+                        isHorizontalSwipe = true;
+                        // Don't prevent default here - let touchend handle it
+                    } else {
+                        // Vertical swipe - allow page scrolling
+                        console.log('Vertical swipe detected');
+                        isVerticalSwipe = true;
+                        // Don't prevent default - let page scroll normally
+                    }
+                }
+            }, { passive: true });
+            
+            this.track.addEventListener('touchend', (e) => {
+                if (touchStarted) {
+                    endX = e.changedTouches[0].clientX;
+                    endY = e.changedTouches[0].clientY;
+                    
+                    console.log('Touch end:', { isHorizontalSwipe, isVerticalSwipe, diffX: Math.abs(endX - startX), diffY: Math.abs(endY - startY) });
+                    
+                    // Handle carousel movement for horizontal swipes (1 or 2 finger)
+                    if (isHorizontalSwipe) {
+                        console.log('Horizontal swipe detected, moving carousel');
+                        this.handleSwipe(startX, endX, startY, endY);
+                    }
+                    
+                    touchStarted = false;
+                    isHorizontalSwipe = false;
+                    isVerticalSwipe = false;
+                    touchCount = 0;
+                }
+            }, { passive: true });
+            
+            // Mouse drag support
+            let mouseStartX = 0;
+            let mouseEndX = 0;
+            let isMouseDragging = false;
+            
+            this.track.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                mouseStartX = e.clientX;
+                isMouseDragging = true;
+            });
+            
+            this.track.addEventListener('mousemove', (e) => {
+                if (isMouseDragging) {
+                    e.preventDefault();
+                }
+            });
+            
+            this.track.addEventListener('mouseup', (e) => {
+                if (isMouseDragging) {
+                    e.preventDefault();
+                    mouseEndX = e.clientX;
+                    const diff = mouseStartX - mouseEndX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.nextCard();
+                        } else {
+                            this.prevCard();
+                        }
+                    }
+                    isMouseDragging = false;
+                }
+            });
+            
+            // Pause auto-play on hover
+            this.track.addEventListener('mouseenter', () => this.stopAutoPlay());
+            this.track.addEventListener('mouseleave', () => this.startAutoPlay());
+        }
+        
+        handleSwipe(startX, endX, startY, endY) {
+            const threshold = 20; // Even more reduced threshold for easier finger swipes
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            console.log('handleSwipe called:', { diffX, diffY, threshold, absDiffX: Math.abs(diffX), absDiffY: Math.abs(diffY) });
+            
+            // Only handle horizontal swipes (ignore vertical scrolling)
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+                console.log('Moving carousel:', diffX > 0 ? 'next' : 'prev');
+                if (diffX > 0) {
+                    this.nextCard();
+                } else {
+                    this.prevCard();
+                }
+            } else {
+                console.log('Swipe not sufficient for carousel movement');
+            }
+        }
+        
+        updateCarousel() {
+            const cardWidth = 100 / 3.125; // Each card takes 1/3.125 of the width (3 full + 2 mostly cut off)
+            const translateX = -this.currentIndex * cardWidth + (100 / 3.125) * 0.5; // Offset to center
+            console.log('Updating carousel - currentIndex:', this.currentIndex, 'translateX:', translateX);
+            this.track.style.transform = `translateX(${translateX}%)`;
+        }
+        
+        nextCard() {
+            if (this.isTransitioning) {
+                console.log('Carousel is transitioning, skipping next card');
+                return;
+            }
+            console.log('Moving to next card, currentIndex:', this.currentIndex);
+            this.isTransitioning = true;
+            
+            this.currentIndex++;
+            this.updateCarousel();
+            
+            // If we're at the end of real cards, jump to the beginning
+            if (this.currentIndex >= this.totalCards + 3) {
+                setTimeout(() => {
+                    this.track.style.transition = 'none';
+                    this.currentIndex = 3;
+                    this.updateCarousel();
+                    setTimeout(() => {
+                        this.track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        this.isTransitioning = false;
+                    }, 50);
+                }, 500);
+            } else {
+                setTimeout(() => {
+                    this.isTransitioning = false;
+                }, 500);
+            }
+        }
+        
+        prevCard() {
+            if (this.isTransitioning) return;
+            this.isTransitioning = true;
+            
+            this.currentIndex--;
+            this.updateCarousel();
+            
+            // If we're at the beginning of real cards, jump to the end
+            if (this.currentIndex < 3) {
+                setTimeout(() => {
+                    this.track.style.transition = 'none';
+                    this.currentIndex = this.totalCards + 2;
+                    this.updateCarousel();
+                    setTimeout(() => {
+                        this.track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        this.isTransitioning = false;
+                    }, 50);
+                }, 500);
+            } else {
+                setTimeout(() => {
+                    this.isTransitioning = false;
+                }, 500);
+            }
+        }
+        
+        
+        startAutoPlay() {
+            console.log('Starting auto-play...');
+            this.stopAutoPlay();
+            this.autoPlayInterval = setInterval(() => {
+                console.log('Auto-play: moving to next card');
+                this.nextCard();
+            }, this.autoPlayDelay);
+            console.log('Auto-play started with interval:', this.autoPlayInterval);
+        }
+        
+        stopAutoPlay() {
+            if (this.autoPlayInterval) {
+                clearInterval(this.autoPlayInterval);
+                this.autoPlayInterval = null;
+            }
+        }
+    }
+    
+    // Initialize highlights carousel when DOM is loaded
+    console.log('Initializing highlights carousel...');
+    const carousel = new HighlightsCarousel();
+    console.log('Carousel initialized:', carousel);
+    
     // Track hotel clicks
     bookButtons.forEach(button => {
         button.addEventListener('click', function() {

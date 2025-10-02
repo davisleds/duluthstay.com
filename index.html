@@ -99,21 +99,52 @@
     <section class="duluth-highlights">
         <div class="container">
             <h2>Why Choose Duluth?</h2>
-            <div class="highlights-grid">
-                <div class="highlight-card">
-                    <img src="lakephoto.jpg" alt="Lake Superior shoreline" loading="lazy">
-                    <h3>Lake Superior Views</h3>
-                    <p>Stunning waterfront accommodations with breathtaking lake views</p>
+            <div class="highlights-carousel-container">
+                <div class="highlights-wrapper">
+                    <div class="highlights-track" id="highlights-track">
+                        <div class="highlight-card">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop" alt="Lake Superior Views" loading="lazy">
+                            <h3>Lake Superior Views</h3>
+                            <p>Experience breathtaking lakefront accommodations with panoramic views of Lake Superior.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <img src="naturalbeauty.jpg" alt="Natural Beauty" loading="lazy">
+                            <h3>Natural Beauty</h3>
+                            <p>Discover Duluth's beautiful parks and nature trails surrounded by pristine wilderness.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=400&fit=crop" alt="Outdoor Adventures" loading="lazy">
+                            <h3>Outdoor Adventures</h3>
+                            <p>Enjoy hiking, biking, and water sports in Duluth's diverse outdoor playground.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <img src="canalpark.jpg" alt="Historic Neighborhoods - Canal Park" loading="lazy">
+                            <h3>Historic Neighborhoods</h3>
+                            <p>Explore Duluth's rich history and vibrant neighborhoods filled with culture and art.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <img src="vabene.jpg" alt="Local Dining Experiences - Va Bene" loading="lazy">
+                            <h3>Local Dining Experiences</h3>
+                            <p>Savor fresh seafood, craft beers, and the best of Duluth's culinary scene.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&h=400&fit=crop" alt="Family Fun & Festivals" loading="lazy">
+                            <h3>Family Fun & Festivals</h3>
+                            <p>Join family-friendly events, festivals, and attractions for all ages.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="highlight-card">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop" alt="Aerial Lift Bridge" loading="lazy">
-                    <h3>Historic Canal Park</h3>
-                    <p>Stay in the heart of Duluth's most popular tourist destination</p>
-                </div>
-                <div class="highlight-card">
-                    <img src="natureduluth.jpg" alt="Duluth waterfront" loading="lazy">
-                    <h3>Natural Beauty</h3>
-                    <p>Hotels surrounded by Lake Superior's stunning waterfront and scenic trails</p>
+                <div class="highlights-controls">
+                    <button class="highlights-btn prev-highlights-btn" id="prev-highlights-btn" aria-label="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="highlights-btn next-highlights-btn" id="next-highlights-btn" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
