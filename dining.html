@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the best local dining experiences in Duluth, Minnesota. From waterfront restaurants to craft breweries, explore Duluth's vibrant culinary scene.">
+    <meta name="keywords" content="Duluth restaurants, local dining Duluth, Canal Park restaurants, craft breweries Duluth, Lake Superior dining">
+    <title>Local Dining Experiences | DuluthStay.com</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .dining-page {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .dining-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .dining-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .dining-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .dining-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .restaurant-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(30, 64, 175, 0.1);
+        }
+        
+        .restaurant-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #1e40af;
+            padding-bottom: 0.5rem;
+        }
+        
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .restaurant-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+        
+        .restaurant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .restaurant-card h3 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .restaurant-card .cuisine {
+            color: #059669;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .restaurant-card .price-range {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .restaurant-card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .restaurant-card .highlights {
+            background: #eff6ff;
+            border-left: 3px solid #1e40af;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        
+        .restaurant-card .highlights h4 {
+            color: #1e40af;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .restaurant-card .highlights ul {
+            margin: 0;
+            padding-left: 1rem;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        
+        .restaurant-card .highlights li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .back-to-home {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .back-to-home a {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home a:hover {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .dining-title {
+                font-size: 2.2rem;
+            }
+            
+            .restaurant-section {
+                padding: 1.5rem;
+            }
+            
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1><a href="index.html">DuluthStay.com</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="travel-guide.html">Travel Guide</a></li>
+                    <li><a href="dining.html">Dining</a></li>
+                    <li><a href="#attractions">Attractions</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dining Page Content -->
+    <section class="dining-page">
+        <div class="dining-header">
+            <h1 class="dining-title">Best Dining Experiences in Duluth: Top Restaurants to Try</h1>
+            <p class="dining-subtitle">Savor fresh seafood, craft beers, and the best of Duluth's culinary scene along the shores of Lake Superior</p>
+        </div>
+        
+        <div class="dining-content">
+            <div class="restaurant-section">
+                <h2>Top Restaurants in Duluth</h2>
+                <p>Discover the best dining experiences Duluth has to offer, from casual cafes to upscale restaurants.</p>
+                
+                <div class="restaurant-grid">
+                    <div class="restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop" alt="Duluth Grill" loading="lazy" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3>Duluth Grill</h3>
+                        <div class="cuisine">Farm-to-Table • Local</div>
+                        <div class="price-range">$$ • Moderate</div>
+                        <p>Popular local restaurant known for fresh, locally-sourced ingredients and creative comfort food. Great atmosphere for families and food enthusiasts.</p>
+                    </div>
+                    
+                    <div class="restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop" alt="Alto Pino" loading="lazy" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3>Alto Pino</h3>
+                        <div class="cuisine">Italian • Upscale</div>
+                        <div class="price-range">$$$ • Upscale</div>
+                        <p>Upscale Italian restaurant offering authentic cuisine with a modern twist. Perfect for special occasions and romantic dinners.</p>
+                    </div>
+                    
+                    <div class="restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop" alt="Va Bene" loading="lazy" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3>Va Bene</h3>
+                        <div class="cuisine">Italian • Cozy</div>
+                        <div class="price-range">$$ • Moderate</div>
+                        <p>Cozy Italian cafe featuring wood-fired pizzas, fresh pasta, and authentic Italian flavors. Family-friendly atmosphere with open kitchen.</p>
+                    </div>
+                    
+                    <div class="restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop" alt="Northern Waters Smokehaus" loading="lazy" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3>Northern Waters Smokehaus</h3>
+                        <div class="cuisine">Smoked Fish • Local</div>
+                        <div class="price-range">$ • Budget-Friendly</div>
+                        <p>Local favorite specializing in smoked fish and sandwiches. Known for Lake Superior whitefish and artisanal smoked meats.</p>
+                    </div>
+                    
+                    <div class="restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" alt="Fitger's Brewhouse" loading="lazy" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3>Fitger's Brewhouse Brewery and Grille</h3>
+                        <div class="cuisine">Brewery • Historic</div>
+                        <div class="price-range">$$$ • Upscale</div>
+                        <p>Historic brewery in a beautifully restored building with craft beers, fine dining, and Lake Superior views. Perfect for special occasions.</p>
+                    </div>
+                    
+                    <div class="restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop" alt="OMC Smokehouse" loading="lazy" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3>OMC Smokehouse</h3>
+                        <div class="cuisine">BBQ • Smokehouse</div>
+                        <div class="price-range">$$ • Moderate</div>
+                        <p>Authentic barbecue smokehouse featuring slow-smoked meats, traditional sides, and craft cocktails. Great for meat lovers and BBQ enthusiasts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DuluthStay.com</h3>
+                    <p>Your trusted source for finding and booking the best hotels in Duluth, Minnesota.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="travel-guide.html">Travel Guide</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Dining Resources</h4>
+                    <ul>
+                        <li><a href="#waterfront">Waterfront Dining</a></li>
+                        <li><a href="#breweries">Craft Breweries</a></li>
+                        <li><a href="#family">Family-Friendly</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Questions about Duluth dining?</p>
+                    <p>We're here to help you find the perfect meal.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DuluthStay.com. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
