@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete summer travel guide for families visiting Duluth, Minnesota. Discover outdoor activities, family-friendly attractions, dining, and hidden gems along Lake Superior.">
+    <meta name="keywords" content="Duluth travel guide, family activities Duluth, summer Duluth, Lake Superior, outdoor activities Minnesota">
+    <title>Duluth Summer Family Travel Guide | DuluthStay.com</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .travel-guide {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .guide-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .guide-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .guide-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .guide-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(30, 64, 175, 0.1);
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #1e40af;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .section p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #1e40af;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .activity-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .activity-card h4 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .activity-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .activity-card .time {
+            color: #059669;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .neighborhood-recommendations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .neighborhood-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .neighborhood-card:hover {
+            border-color: #1e40af;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+        }
+        
+        .neighborhood-card h4 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .neighborhood-card .price-range {
+            color: #059669;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .tips-list {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tips-list h4 {
+            color: #92400e;
+            margin-bottom: 1rem;
+        }
+        
+        .tips-list ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .tips-list li {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-to-home {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .back-to-home a {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home a:hover {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .guide-title {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .activity-grid,
+            .neighborhood-recommendations {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1><a href="index.html">DuluthStay.com</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="travel-guide.html">Travel Guide</a></li>
+                    <li><a href="#attractions">Attractions</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Travel Guide Content -->
+    <section class="travel-guide">
+        <div class="guide-header">
+            <h1 class="guide-title">Duluth Summer Family Travel Guide</h1>
+            <p class="guide-subtitle">Discover the best outdoor adventures, family activities, and hidden gems along Lake Superior's stunning North Shore</p>
+        </div>
+        
+        <div class="guide-content">
+            <!-- Introduction -->
+            <div class="section">
+                <h2>Welcome to Duluth: Minnesota's Gateway to Adventure</h2>
+                <p>Nestled on the shores of Lake Superior, Duluth offers families an incredible summer playground filled with outdoor adventures, rich history, and breathtaking natural beauty. As Minnesota's fourth-largest city, Duluth perfectly balances urban amenities with wilderness access, making it an ideal destination for families seeking both relaxation and adventure.</p>
+                
+                <div class="highlight-box">
+                    <h4>Why Duluth is Perfect for Families</h4>
+                    <p>Duluth's unique geography provides endless opportunities for outdoor recreation, from hiking scenic trails to exploring historic lighthouses. The city's family-friendly atmosphere, combined with its stunning Lake Superior backdrop, creates unforgettable summer memories for visitors of all ages.</p>
+                </div>
+            </div>
+
+            <!-- Top Outdoor Attractions -->
+            <div class="section">
+                <h2>🏔️ Top Outdoor Attractions</h2>
+                
+                <h3>Canal Park & Aerial Lift Bridge</h3>
+                <p>Start your Duluth adventure at Canal Park, the city's most iconic destination. Watch massive freighters pass under the historic Aerial Lift Bridge, explore the Lakewalk, and visit the Maritime Visitor Center. Kids will love watching the bridge rise and fall for passing ships!</p>
+                
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <h4>Enger Tower</h4>
+                        <p>Climb to the top of this historic tower for panoramic views of Lake Superior and the city. Perfect for family photos and spotting ships on the horizon.</p>
+                        <span class="time">⏱️ 1-2 hours</span>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <h4>Piedmont Trail</h4>
+                        <p>Easy hiking trail with stunning views of the city and lake. Great for families with young children, featuring interpretive signs about local wildlife.</p>
+                        <span class="time">⏱️ 2-3 hours</span>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <h4>Brighton Beach</h4>
+                        <p>Rocky shoreline perfect for skipping stones and exploring tide pools. Bring a picnic and watch the sunset over Lake Superior.</p>
+                        <span class="time">⏱️ 2-4 hours</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Activities -->
+            <div class="section">
+                <h2>👨‍👩‍👧‍👦 Best Family Activities</h2>
+                
+                <h3>Great Lakes Aquarium</h3>
+                <p>Dive into the underwater world of the Great Lakes at this family-friendly aquarium. Interactive exhibits let kids touch stingrays, learn about local fish species, and discover the importance of freshwater ecosystems.</p>
+                
+                <h3>Vista Fleet Cruises</h3>
+                <p>Take a scenic boat tour of the harbor and learn about Duluth's maritime history. Kids will love spotting lighthouses, watching the Aerial Lift Bridge in action, and learning about the ships that call Duluth home.</p>
+                
+                <h3>Lake Superior Zoo</h3>
+                <p>Meet local and exotic animals at this charming zoo featuring wolves, bears, and other North Woods creatures. The zoo's natural setting makes it feel like a wilderness adventure.</p>
+                
+                <div class="tips-list">
+                    <h4>💡 Family Travel Tips</h4>
+                    <ul>
+                        <li>Pack layers - Lake Superior creates its own weather system</li>
+                        <li>Bring binoculars for ship watching and bird spotting</li>
+                        <li>Download the Duluth Harbor Cam app to track ship arrivals</li>
+                        <li>Visit during the Duluth Air Show in July for extra excitement</li>
+                        <li>Check out free concerts at Bayfront Festival Park</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hidden Gems -->
+            <div class="section">
+                <h2>💎 Hidden Gems & Local Secrets</h2>
+                
+                <h3>Lester Park</h3>
+                <p>Escape the crowds at this beautiful park featuring hiking trails, waterfalls, and picnic areas. The Amity Creek Trail offers an easy family hike with stunning natural scenery.</p>
+                
+                <h3>Glensheen Mansion</h3>
+                <p>Step back in time at this historic estate on the shores of Lake Superior. Kids will love exploring the mansion's secret passages and learning about Duluth's wealthy past.</p>
+                
+                <h3>Duluth Rose Garden</h3>
+                <p>Stroll through this peaceful garden featuring over 3,000 rose bushes. Perfect for a quiet family moment away from the hustle and bustle.</p>
+                
+                <h3>Park Point Beach</h3>
+                <p>This hidden beach on the world's largest freshwater sandbar offers calm waters perfect for young swimmers. Build sandcastles while watching ships pass by.</p>
+            </div>
+
+            <!-- Dining Recommendations -->
+            <div class="section">
+                <h2>🍽️ Family-Friendly Dining</h2>
+                
+                <h3>Grandma's Restaurant</h3>
+                <p>Iconic Canal Park restaurant with a kids' menu and stunning lake views. Try their famous wild rice soup and don't miss the homemade bread pudding.</p>
+                
+                <h3>Va Bene Caffe</h3>
+                <p>Cozy Italian restaurant perfect for families, featuring wood-fired pizzas and fresh pasta. Kids love watching the pizza being made in the open kitchen.</p>
+                
+                <h3>Northern Waters Smokehaus</h3>
+                <p>Local favorite for smoked fish and sandwiches. Great for a quick lunch before exploring Canal Park.</p>
+                
+                <h3>Duluth Grill</h3>
+                <p>Farm-to-table restaurant with extensive kids' menu and healthy options. Known for their creative takes on comfort food.</p>
+            </div>
+
+            <!-- Where to Stay -->
+            <div class="section">
+                <h2>🏨 Best Neighborhoods to Stay</h2>
+                
+                <div class="neighborhood-recommendations">
+                    <div class="neighborhood-card">
+                        <h4>🏖️ Canal Park</h4>
+                        <p class="price-range">$$$ Premium</p>
+                        <p>Perfect for families who want to be in the heart of the action. Walk to attractions, restaurants, and the Lakewalk. Ideal for first-time visitors.</p>
+                    </div>
+                    
+                    <div class="neighborhood-card">
+                        <h4>🏛️ Downtown</h4>
+                        <p class="price-range">$$ Moderate</p>
+                        <p>Great for families who want easy access to theaters, museums, and shopping. Close to the waterfront with more budget-friendly options.</p>
+                    </div>
+                    
+                    <div class="neighborhood-card">
+                        <h4>🌊 Lakeside</h4>
+                        <p class="price-range">$ Budget-Friendly</p>
+                        <p>Residential area with easy access to Lake Superior beaches and parks. Perfect for families who prefer a quieter, more local experience.</p>
+                    </div>
+                    
+                    <div class="neighborhood-card">
+                        <h4>🏔️ Hillside</h4>
+                        <p class="price-range">$$ Moderate</p>
+                        <p>Historic neighborhood with charming architecture and great views. Close to hiking trails and Enger Tower.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Best Times to Visit -->
+            <div class="section">
+                <h2>📅 When to Visit</h2>
+                
+                <h3>Peak Summer (June-August)</h3>
+                <p>Warmest weather, all attractions open, and plenty of festivals. Expect crowds and higher prices, but perfect weather for outdoor activities.</p>
+                
+                <h3>Shoulder Season (May, September)</h3>
+                <p>Mild weather, fewer crowds, and lower prices. Some attractions may have limited hours, but great for families who prefer quieter experiences.</p>
+                
+                <div class="highlight-box">
+                    <h4>Summer Events Not to Miss</h4>
+                    <p><strong>July:</strong> Duluth Air Show, Bayfront Blues Festival<br>
+                    <strong>August:</strong> Tall Ships Festival, Grandma's Marathon<br>
+                    <strong>September:</strong> Harvest Festival, Fall Color Tours</p>
+                </div>
+            </div>
+
+            <!-- Transportation -->
+            <div class="section">
+                <h2>🚗 Getting Around Duluth</h2>
+                
+                <h3>Car Rental</h3>
+                <p>Most convenient for families, especially if you plan to explore beyond the city. Parking is generally easy to find and affordable.</p>
+                
+                <h3>Duluth Transit Authority (DTA)</h3>
+                <p>Affordable bus service connecting major attractions. Free rides for kids under 6, and family passes available.</p>
+                
+                <h3>Walking & Biking</h3>
+                <p>Canal Park and downtown are very walkable. The Lakewalk provides a scenic bike path along the waterfront.</p>
+                
+                <h3>Uber/Lyft</h3>
+                <p>Available throughout the city, convenient for families who don't want to drive.</p>
+            </div>
+
+            <!-- Packing Tips -->
+            <div class="section">
+                <h2>🎒 What to Pack</h2>
+                
+                <div class="tips-list">
+                    <h4>Essential Items for Summer</h4>
+                    <ul>
+                        <li>Lightweight layers (Lake Superior creates its own weather)</li>
+                        <li>Comfortable walking shoes for hiking and exploring</li>
+                        <li>Binoculars for ship watching and wildlife spotting</li>
+                        <li>Camera or phone with good zoom for distant shots</li>
+                        <li>Reusable water bottles (stay hydrated!)</li>
+                        <li>Sun protection (hat, sunscreen, sunglasses)</li>
+                        <li>Light jacket or sweater for cooler evenings</li>
+                        <li>Swimsuits for beach time and hotel pools</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="section">
+                <h2>🌟 Start Planning Your Duluth Adventure</h2>
+                <p>Duluth offers families an incredible summer experience filled with outdoor adventures, educational opportunities, and unforgettable memories. From watching massive freighters navigate the harbor to exploring pristine wilderness trails, there's something for every family member to enjoy.</p>
+                
+                <p>Whether you're seeking adrenaline-pumping adventures or peaceful moments by the lake, Duluth's unique blend of urban amenities and natural beauty creates the perfect family vacation destination. Start planning your trip today and discover why families return to Duluth year after year!</p>
+                
+                <div class="back-to-home">
+                    <a href="index.html">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DuluthStay.com</h3>
+                    <p>Your trusted source for finding and booking the best hotels in Duluth, Minnesota.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="travel-guide.html">Travel Guide</a></li>
+                        <li><a href="#attractions">Attractions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Travel Resources</h4>
+                    <ul>
+                        <li><a href="#summer-activities">Summer Activities</a></li>
+                        <li><a href="#family-fun">Family Fun</a></li>
+                        <li><a href="#outdoor-adventures">Outdoor Adventures</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Questions about Duluth travel?</p>
+                    <p>We're here to help you plan the perfect trip.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DuluthStay.com. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

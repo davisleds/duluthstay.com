@@ -1034,10 +1034,211 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Second Carousel functionality
+    class SecondCarousel {
+        constructor() {
+            this.track = document.getElementById('second-carousel-track');
+            this.prevBtn = document.getElementById('prev-second-btn');
+            this.nextBtn = document.getElementById('next-second-btn');
+            this.cards = document.querySelectorAll('.second-highlight-card');
+            this.currentIndex = 0;
+            this.totalCards = this.cards.length;
+            this.autoPlayInterval = null;
+            this.autoPlayDelay = 4000; // 4 seconds
+            this.isTransitioning = false;
+            
+            console.log('Second carousel elements found:', {
+                track: !!this.track,
+                prevBtn: !!this.prevBtn,
+                nextBtn: !!this.nextBtn,
+                cards: this.cards.length,
+                totalCards: this.totalCards
+            });
+            
+            if (this.track && this.cards.length > 0) {
+                console.log('Initializing second carousel...');
+                this.init();
+            } else {
+                console.log('Second carousel initialization failed - missing elements');
+            }
+        }
+        
+        init() {
+            this.createInfiniteLoop();
+            this.bindEvents();
+            this.updateCarousel();
+            this.startAutoPlay();
+        }
+        
+        createInfiniteLoop() {
+            // Clone first 3 cards and append to end
+            for (let i = 0; i < 3; i++) {
+                const clone = this.cards[i].cloneNode(true);
+                clone.classList.add('clone');
+                this.track.appendChild(clone);
+            }
+            
+            // Clone last 3 cards and prepend to beginning
+            for (let i = this.totalCards - 3; i < this.totalCards; i++) {
+                const clone = this.cards[i].cloneNode(true);
+                clone.classList.add('clone');
+                this.track.insertBefore(clone, this.track.firstChild);
+            }
+            
+            // Start at the real first card (after the prepended clones)
+            this.currentIndex = 3;
+        }
+        
+        bindEvents() {
+            this.prevBtn.addEventListener('click', () => this.prevCard());
+            this.nextBtn.addEventListener('click', () => this.nextCard());
+            
+            // Touch/swipe support
+            let startX = 0;
+            let endX = 0;
+            let startY = 0;
+            let endY = 0;
+            let isHorizontalSwipe = false;
+            let isVerticalSwipe = false;
+            let touchStarted = false;
+            
+            this.track.addEventListener('touchstart', (e) => {
+                touchStarted = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                isHorizontalSwipe = false;
+                isVerticalSwipe = false;
+            }, { passive: true });
+            
+            this.track.addEventListener('touchmove', (e) => {
+                if (!touchStarted) return;
+                
+                const currentX = e.touches[0].clientX;
+                const currentY = e.touches[0].clientY;
+                const diffX = Math.abs(currentX - startX);
+                const diffY = Math.abs(currentY - startY);
+                
+                if (diffX > 5 || diffY > 5) {
+                    if (diffX > diffY) {
+                        isHorizontalSwipe = true;
+                    } else {
+                        isVerticalSwipe = true;
+                    }
+                }
+            }, { passive: true });
+            
+            this.track.addEventListener('touchend', (e) => {
+                if (touchStarted) {
+                    endX = e.changedTouches[0].clientX;
+                    endY = e.changedTouches[0].clientY;
+                    
+                    if (isHorizontalSwipe) {
+                        this.handleSwipe(startX, endX, startY, endY);
+                    }
+                    
+                    touchStarted = false;
+                    isHorizontalSwipe = false;
+                    isVerticalSwipe = false;
+                }
+            }, { passive: true });
+            
+            // Pause auto-play on hover
+            this.track.addEventListener('mouseenter', () => this.stopAutoPlay());
+            this.track.addEventListener('mouseleave', () => this.startAutoPlay());
+        }
+        
+        handleSwipe(startX, endX, startY, endY) {
+            const threshold = 20;
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+                if (diffX > 0) {
+                    this.nextCard();
+                } else {
+                    this.prevCard();
+                }
+            }
+        }
+        
+        updateCarousel() {
+            const cardWidth = 100 / 3.125;
+            const translateX = -this.currentIndex * cardWidth + (100 / 3.125) * 0.5;
+            this.track.style.transform = `translateX(${translateX}%)`;
+        }
+        
+        nextCard() {
+            if (this.isTransitioning) return;
+            this.isTransitioning = true;
+            
+            this.currentIndex++;
+            this.updateCarousel();
+            
+            if (this.currentIndex >= this.totalCards + 3) {
+                setTimeout(() => {
+                    this.track.style.transition = 'none';
+                    this.currentIndex = 3;
+                    this.updateCarousel();
+                    setTimeout(() => {
+                        this.track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        this.isTransitioning = false;
+                    }, 50);
+                }, 500);
+            } else {
+                setTimeout(() => {
+                    this.isTransitioning = false;
+                }, 500);
+            }
+        }
+        
+        prevCard() {
+            if (this.isTransitioning) return;
+            this.isTransitioning = true;
+            
+            this.currentIndex--;
+            this.updateCarousel();
+            
+            if (this.currentIndex < 3) {
+                setTimeout(() => {
+                    this.track.style.transition = 'none';
+                    this.currentIndex = this.totalCards + 2;
+                    this.updateCarousel();
+                    setTimeout(() => {
+                        this.track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        this.isTransitioning = false;
+                    }, 50);
+                }, 500);
+            } else {
+                setTimeout(() => {
+                    this.isTransitioning = false;
+                }, 500);
+            }
+        }
+        
+        startAutoPlay() {
+            this.stopAutoPlay();
+            this.autoPlayInterval = setInterval(() => {
+                this.prevCard();
+            }, this.autoPlayDelay);
+        }
+        
+        stopAutoPlay() {
+            if (this.autoPlayInterval) {
+                clearInterval(this.autoPlayInterval);
+                this.autoPlayInterval = null;
+            }
+        }
+    }
+    
     // Initialize highlights carousel when DOM is loaded
     console.log('Initializing highlights carousel...');
     const carousel = new HighlightsCarousel();
     console.log('Carousel initialized:', carousel);
+    
+    // Initialize second carousel
+    console.log('Initializing second carousel...');
+    const secondCarousel = new SecondCarousel();
+    console.log('Second carousel initialized:', secondCarousel);
     
     // Track hotel clicks
     bookButtons.forEach(button => {
